@@ -15,13 +15,6 @@ L.circle([41.892206, -80.814211], 500, {
 	fillOpacity: 0.5
 }).addTo(map).bindPopup("<b>Zone around the House</b>.<br><br><i>Notify me if leave the zone</i>");
 
-L.polygon([
-	[41.992206, -0.08],
-	[41.990206, -0.06],
-	[42, -0.047]
-]).addTo(map).bindPopup("I am a polygon.");
-
-
 var popup = L.popup();
 
 function onMapClick(e) {
