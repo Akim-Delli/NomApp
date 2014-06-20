@@ -38,12 +38,12 @@ app.configure( 'production', function () {
 
 // home route
 app.get('/', function (request, response) {
-	response.redirect( './nomApp.html');
+	response.redirect( '/nomApp.html');
 });
 
 // redirect to home
 app.get('/nomapp', function (request, response) {
-	response.redirect( './nomApp.html');
+	response.redirect( '/nomApp.html');
 });
 
 // start server
