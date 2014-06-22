@@ -19,7 +19,10 @@ var models = {
     Location : require('./models/location')(mongoose)
 };
 var db = mongoose.connection;
-db.on('error', console.error);
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open',console.log.bind(console, 'DB Connection established.'));
+// Setting up the debug flag:
+mongoose.set('debug, true');
 
 // Create an http server
 app.server = http.createServer(app);
@@ -54,6 +57,23 @@ app.get('/', function (request, response) {
 app.get('/nomapp', function (request, response) {
 	response.redirect( '/nomApp.html');
 });
+
+app.post('/collect', function(req, res) {
+    var deviceId = req.param('deviceId', '');
+    var longitude = req.param('longitude', '');
+    var latitude = req.param('latitude', '');
+    var timestamp = req.param('timestamp', null);
+
+    if ( null === deviceId || deviceId.length < 1) {
+      console.log('Post request received with No data');
+      res.send(400);
+      return;
+    }
+
+    models.Location.record(deviceId, longitude, latitude, timestamp);
+    res.send(200);
+    return;
+  });
 
 // start server
 port = process.env.PORT || 3000;

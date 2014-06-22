@@ -5,13 +5,38 @@ module.exports = function (mongoose) {
         lon: { type: Number},
         lat: { type: Number},
         timestamp: { type: Number}
-    }),
-        Location = mongoose.model('Location', LocationSchema),
+    });
+    var Location = mongoose.model('Location', LocationSchema);
 
-        findById = function (locationId, callback) {
-            Location.findOne({_id:locationId}, function(err,doc) {
-                callback(doc);
-            });
-        };
+    var registerCallback = function(err) {
+        if (err) {
+            return console.log(err);
+        }
+        return console.log('Location was saved');
+    };
+
+    var findById = function (locationId, callback) {
+        Location.findOne({_id:locationId}, function(err,doc) {
+            callback(doc);
+        });
+    };
+
+    var record = function (deviceId, longitude, latitude, timestamp) {
+        console.log('Saving ' + deviceId);
+        var LocationToSave = new Location ({
+            deviceId: deviceId,
+            lon: longitude,
+            lat: latitude,
+            timestamp: timestamp
+        });
+
+        LocationToSave.save(registerCallback);
+    };
+
+    return {
+        findById: findById,
+        record:     record,
+        Location: Location
+    };
 
 };
