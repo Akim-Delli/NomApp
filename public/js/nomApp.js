@@ -1,3 +1,5 @@
+//console.log(models);
+
 var map = L.map('map').setView([41.892206, -80.814211], 14);
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
