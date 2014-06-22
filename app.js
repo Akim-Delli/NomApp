@@ -62,7 +62,6 @@ app.post('/collect', function(req, res) {
     var deviceId = req.param('deviceId', '');
     var longitude = req.param('longitude', '');
     var latitude = req.param('latitude', '');
-    var timestamp = req.param('timestamp', null);
 
     if ( null === deviceId || deviceId.length < 1) {
       console.log('Post request received with No data');
@@ -70,7 +69,7 @@ app.post('/collect', function(req, res) {
       return;
     }
 
-    models.Location.record(deviceId, longitude, latitude, timestamp);
+    models.Location.record(deviceId, longitude, latitude);
     res.send(200);
     return;
   });

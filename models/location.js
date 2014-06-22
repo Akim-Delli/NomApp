@@ -21,13 +21,13 @@ module.exports = function (mongoose) {
         });
     };
 
-    var record = function (deviceId, longitude, latitude, timestamp) {
+    var record = function (deviceId, longitude, latitude) {
         console.log('Saving ' + deviceId);
         var LocationToSave = new Location ({
             deviceId: deviceId,
             lon: longitude,
             lat: latitude,
-            timestamp: timestamp
+            timestamp: new Date().getTime()
         });
 
         LocationToSave.save(registerCallback);
