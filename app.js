@@ -74,6 +74,19 @@ app.post('/collect', function(req, res) {
     return;
   });
 
+app.get('/location/:deviceId/latest', function(req, res) {
+	var deviceId = req.params.deviceId;
+	models.Location.findLatest( function onSearchDone(err, location) {
+		console.log(location);
+		if(err || location.length === 0) {
+			res.send(404);
+		} else {
+			res.send(location);
+		}
+	});
+});
+
+
 // start server
 port = process.env.PORT || 3000;
 app.server.listen(port);

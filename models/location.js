@@ -15,9 +15,9 @@ module.exports = function (mongoose) {
         return console.log('Location was saved');
     };
 
-    var findById = function (locationId, callback) {
-        Location.findOne({_id:locationId}, function(err,doc) {
-            callback(doc);
+    var findLatest = function (callback) {
+        Location.findOne({}, {}, { sort: { 'timestamp' : 1 } }, function(err, location) {
+            callback(err, location);
         });
     };
 
@@ -34,7 +34,7 @@ module.exports = function (mongoose) {
     };
 
     return {
-        findById: findById,
+        findLatest: findLatest,
         record:     record,
         Location: Location
     };
