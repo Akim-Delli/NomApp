@@ -77,7 +77,6 @@ app.post('/collect', function(req, res) {
 app.get('/location/:deviceId/latest', function(req, res) {
 	var deviceId = req.params.deviceId;
 	models.Location.findLatest( function onSearchDone(err, location) {
-		console.log(location);
 		if(err || location.length === 0) {
 			res.send(404);
 		} else {

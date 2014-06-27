@@ -16,7 +16,7 @@ module.exports = function (mongoose) {
     };
 
     var findLatest = function (callback) {
-        Location.findOne({}, {}, { sort: { 'timestamp' : 1 } }, function(err, location) {
+        Location.findOne({}, {}, { sort: { 'timestamp' : -1 } }, function(err, location) {
             callback(err, location);
         });
     };

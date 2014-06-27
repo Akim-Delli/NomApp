@@ -6,10 +6,12 @@ require.config({
     }
 });
 
-require(["modules/map"], function(map) {
-    //This function is called when scripts/helper/util.js is loaded.
-    //If util.js calls define(), then this function is not fired until
-    //util's dependencies have loaded, and the util argument will hold
-    //the module value for "helper/util".
-    map.initialize();
+require(["modules/map", "modules/location"], function(map, location) {
+    //This function is called when modules/map.js is loaded.
+    //If modules/map.js calls define(), then this function is not fired until
+    //map's dependencies have loaded, and the map argument will hold
+    //the module value for "modules/map".
+    //map.initialize();
+    location.fetch();
+
 });
