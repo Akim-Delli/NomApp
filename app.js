@@ -6,9 +6,7 @@
 var express = require('express');
 var http = require('http');
 var app = express();
-var httpClient = require('request');
 var dbPath = 'mongodb://localhost/nomapp';
-var fs = require('fs');
 var port;
 
 // Import the data layer
@@ -34,7 +32,7 @@ app.configure(function () {
     app.use( express.static( __dirname + '/public' ) );
     app.use( app.router );
     mongoose.connect(dbPath, function onMongooseError(err){
-        if (err) throw err;
+        if (err) { throw err; }
     });
 });
 app.configure('development', function () {
@@ -75,7 +73,7 @@ app.post('/collect', function(req, res) {
   });
 
 app.get('/location/:deviceId/latest', function(req, res) {
-	var deviceId = req.params.deviceId;
+	
 	models.Location.findLatest( function onSearchDone(err, location) {
 		if(err || location.length === 0) {
 			res.send(404);
