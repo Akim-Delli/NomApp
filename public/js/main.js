@@ -1,8 +1,11 @@
+/*jslint node: true */
+"use strict";
+
 require.config({
     paths: {
-    jquery: '/js/libs/jquery',
-    Underscore: '/js/libs/underscore',
-    leaflet: '/js/libs/leaflet'
+    jquery: "/js/libs/jquery",
+    Underscore: "/js/libs/underscore",
+    leaflet: "/js/libs/leaflet"
     }
 });
 
@@ -13,5 +16,7 @@ require(["modules/map", "modules/location"], function(map, location) {
     //the module value for "modules/map".
     //map.initialize();
     location.fetch();
+ 
 
 });
+
