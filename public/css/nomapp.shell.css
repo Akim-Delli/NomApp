@@ -1,0 +1,92 @@
+/*
+ * nomapp.shell.css
+ * Shell styles
+*/
+
+.nomapp-shell-head, .nomapp-shell-head-logo, .nomapp-shell-head-acct,
+.nomapp-shell-head-search, .nomapp-shell-main, .nomapp-shell-main-nav,
+.nomapp-shell-main-content, .nomapp-shell-foot, .nomapp-shell-chat,
+.nomapp-shell-modal {
+  position : absolute;
+}
+.nomapp-shell-head {
+  top    : 0;
+  left   : 0;
+  right  : 0;
+  height : 40px;
+}
+.nomapp-shell-head-logo {
+  top        : 4px;
+  left       : 4px;
+  height     : 32px;
+  width      : 128px;
+  background : orange;
+}
+.nomapp-shell-head-acct {
+  top        : 4px;
+  right      : 0;
+  width      : 64px;
+  height     : 32px;
+  background : green;
+}
+.nomapp-shell-head-search {
+  top        : 4px;
+  right      : 64px;
+  width      : 248px;
+  height     : 32px;
+  background : blue;
+}
+
+.nomapp-shell-main {
+  top    : 40px;
+  left   : 0;
+  bottom : 40px;
+  right  : 0;
+}
+.nomapp-shell-main-content,
+.nomapp-shell-main-nav {
+  top    : 0;
+  bottom : 0;
+}
+.nomapp-shell-main-nav {
+  width  : 250px;
+  background : #eee;
+}
+  .nomapp-x-closed .nomapp-shell-main-nav {
+    width  : 0;
+  }
+
+.nomapp-shell-main-content {
+  left  : 250px;
+  right : 0;
+  background : #ddd;
+}
+  .nomapp-x-closed .nomapp-shell-main-content {
+    left : 0;
+  }
+
+.nomapp-shell-foot {
+  bottom : 0;
+  left   : 0;
+  right  : 0;
+  height : 40px;
+}
+.nomapp-shell-chat {
+  bottom     : 0;
+  right      : 0;
+  width      : 300px;
+  height     : 15px;
+  background : red;
+  z-index    : 1;
+}
+.nomapp-shell-modal {
+  margin-top    : -200px;
+  margin-left   : -200px;
+  top           : 50%;
+  left          : 50%;
+  width         : 400px;
+  height        : 400px;
+  background    : #fff;
+  border-radius : 3px;
+  z-index       : 2;
+}

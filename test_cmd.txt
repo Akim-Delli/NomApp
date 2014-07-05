@@ -1,0 +1,8 @@
+// Akim's  home location
+curl --data "deviceId=1&longitude=40.7202866&latitude=-73.8375309" http://localhost:3000/collect
+
+// Christian's home location
+curl --data "deviceId=1&longitude=41.892206&latitude=-80.814211" http://localhost:3000/collect
+
+db.locations.count()
+
