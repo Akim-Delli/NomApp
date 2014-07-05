@@ -1,6 +1,7 @@
 /**
  * web server entry point.
  */
+/*jslint node: true */
 'use strict';
 
 var express = require('express');
@@ -73,7 +74,7 @@ app.post('/collect', function(req, res) {
   });
 
 app.get('/location/:deviceId/latest', function(req, res) {
-	
+
 	models.Location.findLatest( function onSearchDone(err, location) {
 		if(err || location.length === 0) {
 			res.send(404);
