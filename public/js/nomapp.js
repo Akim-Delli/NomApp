@@ -1,3 +1,8 @@
+/*
+ * nomapp.js
+ * Main Entry Point
+ * Congigure RequireJS
+ */
 "use strict";
 
 require.config({
@@ -13,4 +18,3 @@ require(["nomapp.shell", "jquery"], function (nomapp, $ ) {
     // Initialise the application once the DOM Is ready
     nomapp.initModule($('#nomappid'));
 });
-
