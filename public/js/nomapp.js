@@ -1,14 +1,16 @@
-define([], function() {
-	"use strict";
-	var initModule = function( $container) {
-		$container.html(
-			'<h1 style:inline-block, margin:25px;">' +
-			'hello world!' +
-			'</h1>'
-		);
-	};
+"use strict";
 
-	return {
-		initModule: initModule
-	};
+require.config({
+    paths: {
+        jquery: "libs/jquery",
+        Underscore: "libs/underscore",
+        leaflet: "libs/leaflet",
+        jqueryUriAnchor : "/js/libs/jquery.jqueryuriAnchor.js"
+    }
 });
+
+require(["nomapp.shell", "jquery"], function (nomapp, $ ) {
+    // Initialise the application once the DOM Is ready
+    nomapp.initModule($('#nomappid'));
+});
+
