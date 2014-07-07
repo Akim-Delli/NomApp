@@ -1,5 +1,6 @@
-define(["leaflet"],function ( L) {
 
+define(["leaflet"],function ( L) {
+	'use strict';
 	var initialize = function ( geo) {
 
 		var map = L.map('map').setView([geo.lon, geo.lat], 14);
@@ -42,3 +43,5 @@ define(["leaflet"],function ( L) {
 	};
 
 });
+
+
