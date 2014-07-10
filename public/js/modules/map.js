@@ -3,11 +3,14 @@ define(["leaflet"],function ( L) {
 	'use strict';
 	var initialize = function ( geo) {
 
-		var map = L.map('map').setView([geo.lon, geo.lat], 14);
+		var map = L.map('nomapp-shell-main-content-map').setView([geo.lon, geo.lat], 14);
+
+		map.attributionControl.setPrefix('');
 
 		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 			maxZoom: 17,
-			attribution: 'nomApp &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ',
+			attribution: '',
+			attributionControl: false,
 			id: 'examples.map-i86knfo3'
 		}).addTo(map);
 
@@ -31,10 +34,6 @@ define(["leaflet"],function ( L) {
 		}
 
 		map.on('click', onMapClick);
-
-		// $.get( "/location/1/latest", function( data ) {
-		// 	console.log( data );
-		// });
 
 	};
 

@@ -64,6 +64,9 @@
   .nomapp-x-closed .nomapp-shell-main-content {
     left : 0;
   }
+  .nomapp-shell-main-content-map {
+    height: 100%;
+  }
 
 .nomapp-shell-foot {
   bottom : 0;

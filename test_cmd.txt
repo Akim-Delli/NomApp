@@ -1,8 +1,19 @@
-// Akim's  home location
+# Akim's  home location
 curl --data "deviceId=1&longitude=40.7202866&latitude=-73.8375309" http://localhost:3000/collect
 
-// Christian's home location
+# Christian's home location
 curl --data "deviceId=1&longitude=41.892206&latitude=-80.814211" http://localhost:3000/collect
 
 db.locations.count()
 
+# Screen
+
+# Screen
+
+$ screen
+
+To create a new screen window, just press “Ctrl-A” and “c“.
+
+When you do nested screen, you can switch between screen using command “Ctrl-A” and “n“.
+It will be move to the next screen.
+ When you need to go to the previous screen, just press “Ctrl-A” and “p“.
