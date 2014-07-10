@@ -14,11 +14,12 @@ define(['jquery'], function($){
             '</div>' +
             '<div class="nomapp-shell-main">' +
                 '<div class="nomapp-shell-main-nav"></div>' +
-                '<div class="nomapp-shell-main-content"></div>' +
+                '<div class="nomapp-shell-main-content">' +
+                	'<div id="nomapp-shell-main-content-map" class="nomapp-shell-main-content-map"></div>' +
+                '</div>' +
             '</div>' +
             	'<div class="nomapp-shell-foot"></div>' +
-            	'<div class="nomapp-shell-chat"></div>' +
-            '<div class="nomapp-shell-modal"></div>',
+            	'<div class="nomapp-shell-chat"></div>',
 
 
         chat_extend_time	: 1000,

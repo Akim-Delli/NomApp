@@ -14,7 +14,8 @@ require.config({
     }
 });
 
-require(["nomapp.shell", "jquery"], function (nomapp, $ ) {
+require(["nomapp.shell", "modules/location", "jquery"], function (nomapp, location, $ ) {
     // Initialise the application once the DOM Is ready
     nomapp.initModule($('#nomappid'));
+    location.fetch();
 });
