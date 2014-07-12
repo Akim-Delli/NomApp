@@ -7,6 +7,7 @@
 var express = require('express');
 var http = require('http');
 var app = express();
+var io = require('socket.io');
 var dbPath = 'mongodb://localhost/nomapp';
 var port;
 
@@ -25,6 +26,11 @@ mongoose.set('debug, true');
 
 // Create an http server
 app.server = http.createServer(app);
+
+
+//Websocket
+var socket = io.listen(app.server);
+
 
 // server configuration
 app.configure(function () {
@@ -84,6 +90,12 @@ app.get('/location/:deviceId/latest', function(req, res) {
 	});
 });
 
+socket.on('connection', function(client) {
+    client.on('client message', function(msg){
+        console.log('Client connected:' + msg);
+    });
+    client.emit('server message', 'message from the server');
+});
 
 // start server
 port = process.env.PORT || 3000;
