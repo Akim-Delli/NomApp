@@ -1,9 +1,11 @@
 
 define(["leaflet"],function ( L) {
 	'use strict';
+	var map;
 	var initialize = function ( geo) {
 
-		var map = L.map('nomapp-shell-main-content-map').setView([geo.lon, geo.lat], 14);
+
+		map = L.map('nomapp-shell-main-content-map').setView([geo.lon, geo.lat], 14);
 
 		map.attributionControl.setPrefix('');
 
@@ -36,9 +38,17 @@ define(["leaflet"],function ( L) {
 		map.on('click', onMapClick);
 
 	};
+	 var update = function (geo) {
+
+	 	map.setView([geo.lon, geo.lat], 14);
+
+	 	L.marker([geo.lon, geo.lat]).addTo(map)
+			.bindPopup("<b>Christian Home</b><br />my Home").openPopup();
+	 };
 
 	return {
-		initialize: initialize
+		initialize: initialize,
+		update: update,
 	};
 
 });

@@ -75,6 +75,14 @@ app.post('/collect', function(req, res) {
     }
 
     models.Location.record(deviceId, longitude, latitude);
+    models.Location.findLatest( function onSearchDone(err, location) {
+        if(err || location.length === 0) {
+            console.error('couldn\'t find the latest location');
+        } else {
+            socket.emit('server message', location);
+        }
+    });
+
     res.send(200);
     return;
   });
@@ -94,7 +102,7 @@ socket.on('connection', function(client) {
     client.on('client message', function(msg){
         console.log('Client connected:' + msg);
     });
-    client.emit('server message', 'message from the server');
+    // client.emit('server message', 'message from the server');
 });
 
 // start server

@@ -23,5 +23,6 @@ require(["nomapp.shell", "modules/location", "modules/sockettest","jquery"], fun
     // Initialise the application once the DOM Is ready
     nomapp.initModule($("#nomappid"));
     location.fetch();
-    sockettest.initModule();
+    location.listen();
+    // sockettest.initModule();
 });
