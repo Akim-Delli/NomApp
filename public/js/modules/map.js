@@ -18,6 +18,7 @@ define(["leaflet"],function ( L) {
 				           		'/>'+
 				    		'</circle>'+
 						'</svg>';
+	var marker;
 
 	var initialize = function ( geo) {
 
@@ -28,7 +29,6 @@ define(["leaflet"],function ( L) {
 		    iconSize: null,
 		    iconAnchor: null
 		});
-
 
 		map = L.map('nomapp-shell-main-content-map').setView([geo.lon, geo.lat], 14);
 
@@ -41,7 +41,7 @@ define(["leaflet"],function ( L) {
 			id: 'examples.map-i86knfo3'
 		}).addTo(map);
 
-		L.marker([geo.lon, geo.lat], {icon: targetIcon}).addTo(map);
+		marker = L.marker([geo.lon, geo.lat], {icon: targetIcon}).addTo(map);
 		//	.bindPopup("<b>Christian Home</b><br />my Home").openPopup();
 
 		// L.circle([geo.lon, geo.lat], 500, {
@@ -67,8 +67,9 @@ define(["leaflet"],function ( L) {
 
 	 	map.setView([geo.lon, geo.lat], 14, {pan: 'animate'});
 
-	 	L.marker([geo.lon, geo.lat],  {icon: targetIcon}).addTo(map)
-			.bindPopup(geo.lon + '<br />' + geo.lat).openPopup();
+	 	marker.setLatLng([geo.lon, geo.lat]);
+	 	//map.addLayer(marker);
+			//.bindPopup(geo.lon + '<br />' + geo.lat).openPopup();
 	 };
 
 	return {
