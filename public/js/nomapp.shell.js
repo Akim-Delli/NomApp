@@ -13,7 +13,6 @@ define(['jquery'], function($){
                 '<div class="nomapp-shell-head-search"></div>' +
             '</div>' +
             '<div class="nomapp-shell-main">' +
-                '<div class="nomapp-shell-main-nav"></div>' +
                 '<div class="nomapp-shell-main-content">' +
                 	'<div id="nomapp-shell-main-content-map" class="nomapp-shell-main-content-map"></div>' +
                 '</div>' +
