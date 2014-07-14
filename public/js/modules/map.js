@@ -40,10 +40,10 @@ define(["leaflet"],function ( L) {
 	};
 	 var update = function (geo) {
 
-	 	map.setView([geo.lon, geo.lat], 14);
+	 	map.setView([geo.lon, geo.lat], 14, {pan: 'animate'});
 
 	 	L.marker([geo.lon, geo.lat]).addTo(map)
-			.bindPopup("<b>Christian Home</b><br />my Home").openPopup();
+			.bindPopup(geo.lon + '<br />' + geo.lat).openPopup();
 	 };
 
 	return {

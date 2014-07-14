@@ -4,6 +4,9 @@ curl --data "deviceId=1&longitude=40.7202866&latitude=-73.8375309" http://localh
 # Christian's home location
 curl --data "deviceId=1&longitude=41.892206&latitude=-80.814211" http://localhost:3000/collect
 
+curl --data "deviceId=1&longitude=41.88202&latitude=-80.83388" http://localhost:3000/collect
+
+
 db.locations.count()
 
 # Screen

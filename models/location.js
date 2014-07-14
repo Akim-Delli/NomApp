@@ -21,8 +21,8 @@ module.exports = function (mongoose) {
         });
     };
 
-    var record = function (deviceId, longitude, latitude) {
-        console.log('Saving ' + deviceId);
+    var record = function (deviceId, longitude, latitude, callback) {
+        console.log('Saving Location for DeviceId: ' + deviceId);
         var LocationToSave = new Location ({
             deviceId: deviceId,
             lon: longitude,
@@ -30,7 +30,8 @@ module.exports = function (mongoose) {
             timestamp: new Date().getTime()
         });
 
-        LocationToSave.save(registerCallback);
+        LocationToSave.save(callback);
+        // callback();
     };
 
     return {

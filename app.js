@@ -74,13 +74,14 @@ app.post('/collect', function(req, res) {
       return;
     }
 
-    models.Location.record(deviceId, longitude, latitude);
-    models.Location.findLatest( function onSearchDone(err, location) {
-        if(err || location.length === 0) {
-            console.error('couldn\'t find the latest location');
-        } else {
-            socket.emit('server message', location);
-        }
+    models.Location.record(deviceId, longitude, latitude, function(){
+        models.Location.findLatest( function onSearchDone(err, location) {
+            if(err || location.length === 0) {
+                console.error('couldn\'t find the latest location');
+            } else {
+                socket.emit('server message', location);
+            }
+        });
     });
 
     res.send(200);
