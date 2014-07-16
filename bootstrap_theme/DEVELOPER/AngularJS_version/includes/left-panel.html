@@ -1,0 +1,117 @@
+<!-- User info -->
+			<div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as is --> 
+					
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+						<img src="img/avatars/sunny.png" alt="me" class="online" /> 
+						<span data-localize="john.doe">
+							john.doe 
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a> 
+					
+				</span>
+			</div>
+			<!-- end user info -->
+
+			<!-- NAVIGATION : This navigation is also responsive
+
+			To make this navigation dynamic please make sure to link the node
+			(the reference to the nav > ul) after page load. Or the navigation
+			will not initialize.
+			-->
+
+			<navigation>
+				<nav:item data-view="/dashboard" data-icon="fa fa-lg fa-fw fa-home" title="Dashboard" />
+				<nav:group data-icon="fa fa-lg fa-fw fa-code" title="Angular Stuff" >
+					<nav:item data-view="/angular/ui" title="UI Bootstrap" />
+					<nav:item data-view="/angular/gen-locale" title="Get Locale JSON" />
+					<nav:item data-view="/angular/smartui" title="SmartUI Directives" />
+				</nav:group>
+				<nav:item data-view="/inbox" data-icon="fa fa-lg fa-fw fa-inbox" title="Inbox"><span class="badge pull-right inbox-badge">14</span></nav:item>
+				<nav:group data-icon="fa fa-lg fa-fw fa-bar-chart-o" title="Graphs">
+					<nav:item data-view="/graphs/flot" title="Flot Chart" />
+					<nav:item data-view="/graphs/morris" title="Morris Charts" />
+					<nav:item data-view="/graphs/inline-charts" title="Inline Charts" />
+					<nav:item data-view="/graphs/dygraphs" title="Dygraphs"><span class="badge pull-right inbox-badge bg-color-yellow">new</span></nav:item>
+				</nav:group>
+				<nav:group data-icon="fa fa-lg fa-fw fa-table" title="Tables">
+					<nav:item data-view="/tables/table" title="Normal Tables" />
+					<nav:item data-view="/tables/datatables" title="Data Tables"><span class="badge inbox-badge bg-color-greenLight">v1.10</span></nav:item>
+					<nav:item data-view="/tables/jqgrid" title="Jquery Grid" />
+				</nav:group>
+				<nav:group data-icon="fa fa-lg fa-fw fa-pencil-square-o" title="Forms">
+					<nav:item data-view="/forms/form-elements" title="Smart Form Elements" />
+					<nav:item data-view="/forms/form-templates" title="Smart Form Layouts" />
+					<nav:item data-view="/forms/validation" title="Smart Form Validation" />
+					<nav:item data-view="/forms/bootstrap-forms" title="Bootstrap Form Elements" />
+					<nav:item data-view="/forms/plugins" title="Form Plugins" />
+					<nav:item data-view="/forms/wizard" title="Wizards" />
+					<nav:item data-view="/forms/other-editors" title="Bootstrap Editors" />
+					<nav:item data-view="/forms/dropzone" title="Dropzone" />
+					<nav:item data-view="/forms/image-editor" title="Image Cropping"><span class="badge pull-right inbox-badge bg-color-yellow">new</span></nav:item>
+				</nav:group>
+				<nav:group data-icon="fa fa-lg fa-fw fa-desktop" title="UI Elements">
+					<nav:item data-view="/ui/general-elements" title="General Elements" />
+					<nav:item data-view="/ui/buttons" title="Buttons" />
+					
+					<nav:group title="Icons">
+						<nav:item data-view="/ui/icons/fa" data-icon="fa fa-lg fa-fw fa-plane" title="Font Awesome" />
+						<nav:item data-view="/ui/icons/glyph" data-icon="glyphicon glyphicon-plane" title="Glyph Icons" />
+						<nav:item data-view="/ui/icons/flags" data-icon="fa fa-flag" title="Flags" />
+					</nav:group>
+
+					<nav:item data-view="/ui/grid" title="Grid" />
+					<nav:item data-view="/ui/treeview" title="Tree View" />
+					<nav:item data-view="/ui/nestable-list" title="Nestable Lists" />
+					<nav:item data-view="/ui/jqui" title="JQuery UI" />
+					<nav:item data-view="/ui/typography" title="Typography" />
+					
+					<nav:group title="Six Level Menu">
+						<nav:group title="Item #2">
+							<nav:group data-icon="fa fa-lg fa-fw fa-folder-open" title="Sub #2.1">
+								<nav:item data-view="ui/icons/fa" title="Item #2.1.1" data-icon="fa fa-lg fa-fw fa-file-text" />
+								<nav:group title="Expand" data-icon="fa fa-lg fa-fw fa-plus">
+										<nav:item data-icon="fa fa-lg fa-fw fa-file-text" title="File" />
+										<nav:item data-icon="fa fa-lg fa-fw fa-trash-o" title="Delete" />
+								</nav:group>
+							</nav:group>
+						</nav:group>
+						<nav:group title="Item #3">
+							<nav:group data-icon="fa fa-lg fa-fw fa-folder-open" title="3rd Level">
+								<nav:item data-icon="fa fa-lg fa-fw fa-file-text" title="File" />
+								<nav:item data-icon="fa fa-lg fa-fw fa-file-text" title="File" />
+							</nav:group>
+						</nav:group>
+					</nav:group>
+				</nav:group>
+				<nav:item data-view="/calendar" data-icon="fa fa-lg fa-fw fa-calendar" data-icon-caption="3" title="Calendar" />
+				<nav:item data-view="/widgets" data-icon="fa fa-lg fa-fw fa-list-alt" title="Widgets" />
+				<nav:item data-view="/gallery" data-icon="fa fa-lg fa-fw fa-picture-o" title="Gallery" />
+				<nav:item data-view="/gmap-xml" data-icon="fa fa-lg fa-fw fa-map-marker" title="GMap Skins"><span class="badge bg-color-greenLight pull-right inbox-badge">9</span></nav:item>
+				<nav:group data-icon="fa fa-lg fa-fw fa-windows" title="Miscellaneous">
+					<nav:group data-icon="fa fa-lg fa-fw fa-file" title="Other Pages">
+						<nav:item data-view="/misc/other/forum" title="Forum Layout" />
+						<nav:item data-view="/misc/other/profile" title="Profile" />
+						<nav:item data-view="/misc/other/timeline" title="Timeline" />
+					</nav:group>	
+					<nav:item data-view="/misc/pricing-table" title="Pricing Tables" />
+					<nav:item data-view="/misc/invoice" title="Invoice" />
+					<nav:item href="login.html" target="_top" title="Login" />
+					<nav:item href="register.html" target="_top" title="Register" />
+					<nav:item href="lock.html" target="_top" title="Locked Screen" />
+					<nav:item data-view="/misc/error404" title="Error 404" />
+					<nav:item data-view="/misc/error500" title="Error 500" />
+					<nav:item data-view="/misc/blank_" title="Blank Page" />
+					<nav:item data-view="/misc/email-template" title="Email Template" />
+					<nav:item data-view="/misc/search" title="Search Page" />
+					<nav:item data-view="/misc/ckeditor" title="CK Editor" />
+				</nav:group>
+				<nav:group data-icon="fa fa-lg fa-fw fa-cube txt-color-blue" title="SmartAdmin Intel">
+					<nav:item data-view="/intel/difver" data-icon="fa fa-lg fa-fw fa-stack-overflow" title="Different Versions" />
+					<nav:item data-view="/intel/applayout" data-icon="fa fa-cube" title="App Settings" />
+					<nav:item href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/documentation/index" target="_blank" data-icon="fa fa-lg fa-fw fa-book" title="Documentation" />
+					<nav:item href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/" target="_blank" data-icon="fa fa-lg fa-fw fa-bug" title="Bug Tracker" />
+				</nav:group>
+			</navigation>
+			<span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>

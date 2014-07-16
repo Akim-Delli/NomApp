@@ -1,0 +1,167 @@
+<!-- Bread crumb is created dynamically -->
+
+<!--
+	The ID "widget-grid" will start to initialize all widgets below 
+	You do not need to use widgets if you dont want to. Simply remove 
+	the <section></section> and you can use wells or panels instead 
+	-->
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<div class="well">
+		<div class="alert alert-info">
+			This utility will get all elements with <code>data-localize</code> attribute and will attempt to translate them to each provided languages. Click <strong>Generate</strong> to get started!
+		</div>
+
+		<div class="alert alert-warning">
+			<a class="close" data-dismiss="alert">×</a>
+			<h4 class="alert-heading">Warning!</h4>
+			Translation service is provided by <a href="http://mymemory.translated.net/doc/spec.php">mymemory.translated.net</a>. Free, anonymous usage is limited to 100 requests/day. Provide a valid email for <code>de</code> parameter to get 1000 requests/day.
+
+			<div class="form-group">
+			<label></label>
+				<input class="form-control" value="" placeholder="Email" id="email">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label>Input custom text to localize</label>
+			<input class="form-control tagsinput" value="Page Header,Subtitle" data-role="tagsinput" id="custom-text">
+		</div>
+
+		<ul class="list-inline" id="localize">
+			<!--li>
+				<div class="well well-sm">
+					<strong data-source-text="">Test Text</strong><br />
+					- en: <span class="text-danger" data-lang="en">ajfjfskjdfsd</span><br />
+				</div>
+			</li-->
+		</ul>
+		
+		<button class="btn btn-success" id="run-generator">
+			<i class="fa fa-hand-o-right" ></i> Generate!
+		</button>
+
+		<button class="btn btn-primary" id="get-json">
+			GET JSON!
+		</button>
+		<br /><br />
+		<div id="lang-json">
+
+		</div>
+	</div>
+		
+	<!-- row -->
+
+	<div class="row">
+
+		<!-- a blank row to get started -->
+		<div class="col-sm-12">
+			<!-- your contents here -->
+		</div>
+			
+	</div>
+
+	<!-- end row -->
+
+</section>
+<!-- end widget grid -->
+
+<script type="text/javascript">
+	 
+	pageSetUp();
+
+	loadScript("js/plugin/bootstrap-tags/bootstrap-tagsinput.min.js");
+
+	var languages = ['en', 'zh', 'de', 'fr', 'es', 'ko', 'ru', 'pt'];
+	var translate = function(textToTranslate, fromLanguage, toLanguage, el) {
+		var $email = $('#email').val();
+		if (fromLanguage == toLanguage) {
+			el.text(textToTranslate);
+			return;
+		}
+		//el.text(textToTranslate + ' to ' + toLanguage);
+		$.ajax({
+			type: 'get',
+			url: 'http://api.mymemory.translated.net/get',
+			data: {
+				q: textToTranslate,
+				langpair: fromLanguage + '|' + toLanguage,
+				de: $email
+			},
+			dataType: 'json',
+			success: function(data) {
+				el.text(data.responseData.translatedText);
+			},
+			error: function(request, status, error) {
+				el.text('error: status-'+status+', desc-'+error);
+			}
+		});
+	};
+
+	$('#get-json').on('click', function() {
+		var locales = {};
+		for (var i in languages) {
+			var lang = languages[i],
+				translation = locales[lang] = {};
+
+			$('[data-localize-text]').each(function() {
+				var el = $(this);
+				var localizedText = el.find('[data-lang="'+lang+'"]:eq(0)').text().trim();
+				translation[el.data('localize-text')] = localizedText;
+			})
+		}
+
+		for (var l in locales) {
+			$('#lang-json').append('<p>' + l + '</p><pre>' + JSON.stringify(locales[l]) + '</pre>');
+		}
+	});
+
+	$('#run-generator').on('click', function() {
+		var $displayContainer = $('#localize').empty(),
+			words = []
+
+		$('[data-localize]').each(function() {
+			var el = $(this),
+				word = el.is('input, textarea') ? el.attr('placeholder') : el.text();
+			words.push(word.trim());
+		});
+
+		$.merge(words, $('#custom-text').tagsinput('items'));
+
+		for (var i in words) {
+			var word = words[i];
+				content = ''
+			for (var i in languages) {
+				var lang = languages[i];
+				content += '\
+					'+lang+': <span class="text-danger" data-lang="'+lang+'">loading ...</span><br />\
+				';
+			}
+
+			var $contentHtml = $('\
+				<li data-localize-text="' + word + '">\
+					<div class="well well-sm">\
+						<strong>'+word+'</strong><br />\
+						'+content+'\
+					</div>\
+				</li>\
+			');
+
+			$contentHtml.find('[data-lang]').each(function() {
+				var toLang = $(this).data('lang');
+				translate(word, 'en', toLang, $(this));
+			});
+
+			$displayContainer.append($contentHtml);
+		}
+	});
+
+	/*
+	 * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
+	 * eg alert("my home function");
+	 */
+
+	
+</script>
