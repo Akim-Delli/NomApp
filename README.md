@@ -19,3 +19,7 @@ Real-Time tracker App and Device
 <dt><strong>MongoDb</strong></dt>
 <dd>Version used is 2.4.9</dd>
 
+
+<h3> Continuous Integration : Travis CI</h3>
+https://travis-ci.org/Akim-Delli/NomApp
+
