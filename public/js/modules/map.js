@@ -1,9 +1,36 @@
 
 define(["leaflet"],function ( L) {
 	'use strict';
+	var map;
+
+	var icon_target_svg = '<svg xmlns="http://www.w3.org/2000/svg" overflow="visible" >'+
+				    		'<circle cx="5" cy="5" fill="none" stroke="blue" stroke-width="3" >'+
+				        		'<animate attributeName="r"'+
+				                          'from="0" to="30"'+
+				                          'begin="0s" dur="1s"'+
+				                          'repeatCount="indefinite"'+
+				                '/>'+
+				        		'<animate attributeName="opacity"'+
+				               			  'from="1" to="0"'+
+				                          'dur="1s"'+
+				                          'begin="0s" dur="1s"'+
+				                          'repeatCount="indefinite"'+
+				           		'/>'+
+				    		'</circle>'+
+						'</svg>';
+	var marker;
+
 	var initialize = function ( geo) {
 
-		var map = L.map('nomapp-shell-main-content-map').setView([geo.lon, geo.lat], 14);
+
+		var targetIcon = L.divIcon({
+		    className: 'svg-marker',
+		    html: icon_target_svg,
+		    iconSize: null,
+		    iconAnchor: null
+		});
+
+		map = L.map('nomapp-shell-main-content-map').setView([geo.lon, geo.lat], 14);
 
 		map.attributionControl.setPrefix('');
 
@@ -14,15 +41,15 @@ define(["leaflet"],function ( L) {
 			id: 'examples.map-i86knfo3'
 		}).addTo(map);
 
-		L.marker([geo.lon, geo.lat]).addTo(map)
-			.bindPopup("<b>Christian Home</b><br />my Home").openPopup();
+		marker = L.marker([geo.lon, geo.lat], {icon: targetIcon}).addTo(map);
+		//	.bindPopup("<b>Christian Home</b><br />my Home").openPopup();
 
-		L.circle([geo.lon, geo.lat], 500, {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.5
-		}).addTo(map)
-		  .bindPopup("<b>Zone around the House</b>.<br><br><i>Notify me if leave the zone</i>");
+		// L.circle([geo.lon, geo.lat], 500, {
+		// 	color: 'red',
+		// 	fillColor: '#f03',
+		// 	fillOpacity: 0.5
+		// }).addTo(map)
+		//   .bindPopup("<b>Zone around the House</b>.<br><br><i>Notify me if leave the zone</i>");
 
 		var popup = L.popup();
 
@@ -36,9 +63,18 @@ define(["leaflet"],function ( L) {
 		map.on('click', onMapClick);
 
 	};
+	 var update = function (geo) {
+
+	 	map.setView([geo.lon, geo.lat], 14, {pan: 'animate'});
+
+	 	marker.setLatLng([geo.lon, geo.lat]);
+	 	//map.addLayer(marker);
+			//.bindPopup(geo.lon + '<br />' + geo.lat).openPopup();
+	 };
 
 	return {
-		initialize: initialize
+		initialize: initialize,
+		update: update,
 	};
 
 });

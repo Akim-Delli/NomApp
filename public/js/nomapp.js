@@ -3,19 +3,26 @@
  * Main Entry Point
  * Congigure RequireJS
  */
-"use strict";
 
 require.config({
+    shim: {
+        'socketio': {
+          exports: 'io'
+        }
+    },
     paths: {
         jquery: "libs/jquery",
         Underscore: "libs/underscore",
         leaflet: "libs/leaflet",
-        jqueryUriAnchor : "/js/libs/jquery.jqueryuriAnchor.js"
+        jqueryUriAnchor : "libs/jquery.jqueryuriAnchor",
+        socketio : "../socket.io/socket.io"
     }
 });
 
-require(["nomapp.shell", "modules/location", "jquery"], function (nomapp, location, $ ) {
+require(["nomapp.shell", "modules/location", "modules/sockettest","jquery"], function (nomapp, location, sockettest, $ ) {
     // Initialise the application once the DOM Is ready
-    nomapp.initModule($('#nomappid'));
+    nomapp.initModule($("#nomappid"));
     location.fetch();
+    location.listen();
+    // sockettest.initModule();
 });
