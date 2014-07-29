@@ -5,7 +5,8 @@
     "main":"app.js",
     "private": true,
     "scripts": {
-      "start": "node app.js"
+      "start": "node app.js",
+      "test" : "jasmine-node tests/spec/location-spec.js"
   	},
     "repository": {
     	"type": "git",
