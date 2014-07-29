@@ -6,7 +6,7 @@
     "private": true,
     "scripts": {
       "start": "node app.js",
-      "test" : "jasmine-node tests/spec/location-spec.js"
+      "test" : "jasmine-node --verbose tests/spec/location-spec.js"
   	},
     "repository": {
     	"type": "git",
