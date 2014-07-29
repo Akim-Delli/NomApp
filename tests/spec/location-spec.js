@@ -21,7 +21,7 @@ describe('location', function() {
 
 	    // run the assertion after status has been set
 	    runs(function() {
-	        expect(status).toEqual("saved");
+	        expect(status).toEqual("save");
 	    });
 	});
 
