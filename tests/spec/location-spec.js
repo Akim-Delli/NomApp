@@ -11,7 +11,7 @@ describe('location', function() {
 		var status;
 		location.record( 1, 40.00000,-80.00000, test);
 		function test () {
-			status = "save";
+			status = "saved";
 		};
 
 		// wait for async call to be finished
