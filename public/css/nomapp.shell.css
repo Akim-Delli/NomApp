@@ -43,21 +43,18 @@
   bottom : 40px;
   right  : 0;
 }
-.nomapp-shell-main-content,
-.nomapp-shell-main-nav {
+.nomapp-shell-main-content
+ {
   top    : 0;
   bottom : 0;
 }
-.nomapp-shell-main-nav {
-  width  : 250px;
-  background : #eee;
-}
-  .nomapp-x-closed .nomapp-shell-main-nav {
+
+  .nomapp-x-closed  {
     width  : 0;
   }
 
 .nomapp-shell-main-content {
-  left  : 250px;
+  left  : 0px;
   right : 0;
   background : #ddd;
 }
@@ -78,7 +75,6 @@
 .nomapp-shell-chat {
   position: absolute;
   top: 20px;
-  /*margin-bottom     : 15px;*/
   right      : 0;
   width      : 300px;
   height     : 90%;
