@@ -17,15 +17,15 @@ define(['jquery'], function($){
                 '<div class="nomapp-shell-main-content">' +
                 	'<div id="nomapp-shell-main-content-map" class="nomapp-shell-main-content-map"></div>' +
                 '</div>' +
+                '<div class="nomapp-shell-chat"></div>' +
             '</div>' +
-            	'<div class="nomapp-shell-foot"></div>' +
-            	'<div class="nomapp-shell-chat"></div>',
+            	'<div class="nomapp-shell-foot"></div>',
 
 
         chat_extend_time	: 1000,
         chat_retract_time	: 300,
-        chat_extend_height	: 450,
-        chat_retract_height	: 15,
+        chat_extend_width	: 300,
+        chat_retract_width	: 15,
         chat_extended_title: 'Click to retract',
         chat_retracted_title: 'Click to extend'
  	},
@@ -62,7 +62,7 @@ define(['jquery'], function($){
  	//   * callback - optional function to execute at end of animation
  	// Settings :
  	//	 * chat_extend_time, chat_retract_time
- 	//   * chat_extend_height, chat_retract_height
+ 	//   * chat_extend_width, chat_retract_width
  	// Returns : boolean
  	//	 * true  - slider animation activated
  	//   * false - slider animation not activated
@@ -71,9 +71,9 @@ define(['jquery'], function($){
  	//   * false - slider is extended
  	toggleChat = function ( do_extend, callback ) {
  		var
- 			px_chat_ht = jqueryMap.$chat.height(),
- 			is_open    = px_chat_ht === configMap.chat_extend_height,
- 			is_closed  = px_chat_ht === configMap.chat_retract_height,
+ 			px_chat_ht = jqueryMap.$chat.width(),
+ 			is_open    = px_chat_ht === configMap.chat_extend_width,
+ 			is_closed  = px_chat_ht === configMap.chat_retract_width,
  			is_sliding = ! is_open && !is_closed;
 
  		// avoid race condition
@@ -82,7 +82,7 @@ define(['jquery'], function($){
  		// Begin extend chat slider
  		if ( do_extend ) {
  			jqueryMap.$chat.animate(
- 				{ height : configMap.chat_extend_height },
+ 				{ width : configMap.chat_extend_width },
  				configMap.chat_extend_time,
  				function () {
  					jqueryMap.$chat.attr(
@@ -98,7 +98,7 @@ define(['jquery'], function($){
 
  		// Begin retract chat slider
  		jqueryMap.$chat.animate(
- 			{ height : configMap.chat_retract_height },
+ 			{ width : configMap.chat_retract_width },
  				configMap.chat_retract_time,
  				function () {
  					jqueryMap.$chat.attr(
@@ -129,7 +129,7 @@ define(['jquery'], function($){
  		$container.html( configMap.main_html );
  		setJqueryMap();
 
- 		stateMap.is_chat_retracted = true;
+ 		stateMap.is_chat_retracted = false;
  		jqueryMap.$chat
  			.attr( 'title', configMap.chat_retracted_title)
  			.click( onclickChat);
