@@ -7,7 +7,7 @@ define(['socketio', 'jquery', 'modules/map'], function (io, $, map) {
 		});
 	},
 		listen = function() {
-			var socket = io.connect('http://localhost:3000');
+			var socket = io.connect();
 			socket.on('server message', function(location){
 				console.log(location);
 				map.update( location);
