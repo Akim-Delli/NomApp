@@ -34,7 +34,7 @@ define(["leaflet"],function ( L) {
 
 		map.attributionControl.setPrefix('');
 
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+		L.tileLayer('http://{s}.tile.osm.org//{z}/{x}/{y}.png', {
 			maxZoom: 17,
 			attribution: '',
 			attributionControl: false,
