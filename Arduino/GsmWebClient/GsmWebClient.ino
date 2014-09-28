@@ -1,21 +1,33 @@
 /*
-  Web client
+  GPS
+ 
+ How it works:
+   - The dGPS requires the SoftwareSerial.h library.
+   - The GPS is initialized in the setup function.
+   - The GPS is updated: values for location, time, etc, are updated using the ".update" function.
+   - The values are read using their respective calls.  These values stay the same until "update" is called again. 
+-------------------------------------------------------------------------
+  GSM Web client
 
- This sketch connects to a website through a GSM shield.
- prints the Http Response to the Serial monitor.
+ This sketch connects to a website through a GSM shield. Print the Http response
+ to the serial Monitor
 
  Circuit:
  * GSM shield attached to an Arduino
  * SIM card with a data plan
 
-
- example from:
+ Example taken from:
  http://arduino.cc/en/Tutorial/GSMExamplesWebClient
 
  */
 
 // libraries
 #include <GSM.h>
+
+#include <string.h>
+#include <ctype.h>
+#include "AltSoftSerial.h"
+#include "dGPS.h"
 
 // PIN Number
 #define PINNUMBER ""
@@ -25,10 +37,20 @@
 #define GPRS_LOGIN     ""    // replace with your GPRS login
 #define GPRS_PASSWORD  "" // replace with your GPRS password
 
-// initialize the library instance
+// initialize the library instance For GSM
 GSMClient client;
 GPRS gprs;
 GSM gsmAccess;
+
+
+// Software serial TX & RX Pins for the GPS module
+// Initiate the software serial connection
+int ledPin = 13;                  // LED test pin
+float desLat=0;                   //Destination Latitude filled by user in Serial Monitor Box
+float desLon=0;                   //Destination Longitude filled by user in Serial Monitor Box
+char fla[2];                      //flag (Y/N) whether to print checksum or not. Filled by user in Serial Monitor Box
+dGPS dgps = dGPS();               // Construct dGPS class
+
 
 // URL, path & port (for example: arduino.cc)
 char server[] = "207.237.3.41";
@@ -80,7 +102,7 @@ void setup()
     client.println("Connection: close");
     client.println();
 
-    client.println("deviceId=1&longitude=40.7202866&latitude=-73.8375309");
+    client.println(data);
   }
   else
   {
